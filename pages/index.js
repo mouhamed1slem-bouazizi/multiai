@@ -4,20 +4,21 @@ import styles from '../styles/Home.module.css'; // Assuming you have this from c
 
 const availableModels = [
   // OpenAI <mcreference link="https://docs.aimlapi.com/api-references/model-database" index="0">0</mcreference>
+  { id: 'gpt-4.5-preview', name: 'Chat GPT 4.5 preview (OpenAI)' },
+  { id: 'openai/gpt-4.1-2025-04-14', name: 'GPT-4.1 (OpenAI)' },
+  { id: 'openai/gpt-4.1-mini-2025-04-14', name: 'GPT-4.1 Mini (OpenAI)' },
+  { id: 'openai/gpt-4.1-nano-2025-04-14', name: 'GPT-4.1 Nano (OpenAI)' },
   { id: 'gpt-4o', name: 'GPT-4o (OpenAI)' },
-  { id: 'gpt-4o-2024-08-06', name: 'GPT-4o 2024-08-06 (OpenAI)' },
+  { id: 'chatgpt-4o-latest', name: 'GPT-4o Latest (OpenAI)' },
   { id: 'gpt-4o-mini', name: 'Chat GPT 4o mini (OpenAI)' },
+  { id: 'o1-mini', name: 'OpenAI o1-mini (OpenAI)' },
+  { id: 'o1', name: 'OpenAI o1 (OpenAI)' },
+  { id: 'o3-mini', name: 'OpenAI o3 mini (OpenAI)' },
   { id: 'gpt-4-turbo', name: 'GPT-4 Turbo (OpenAI)' },
-  { id: 'gpt-4-turbo-2024-04-09', name: 'GPT-4 Turbo 2024-04-09 (OpenAI)' },
-  { id: 'gpt-4-turbo-preview', name: 'GPT-4 Turbo Preview (OpenAI)' },
-  { id: 'gpt-4-0125-preview', name: 'GPT-4 0125 Preview (OpenAI)' },
-  { id: 'gpt-4-1106-preview', name: 'GPT-4 1106 Preview (OpenAI)' },
   { id: 'gpt-4-vision-preview', name: 'GPT-4 Vision Preview (OpenAI)' }, // Note: Vision capabilities might need specific handling
   { id: 'gpt-4', name: 'GPT-4 (OpenAI)' },
   { id: 'gpt-4-0613', name: 'GPT-4 0613 (OpenAI)' },
-  { id: 'gpt-3.5-turbo-0125', name: 'GPT-3.5 Turbo 0125 (OpenAI)' },
   { id: 'gpt-3.5-turbo', name: 'GPT-3.5 Turbo (OpenAI)' },
-  { id: 'gpt-3.5-turbo-1106', name: 'GPT-3.5 Turbo 1106 (OpenAI)' },
   { id: 'gpt-3.5-turbo-instruct', name: 'GPT-3.5 Turbo Instruct (OpenAI)' },
 
   // Meta <mcreference link="https://docs.aimlapi.com/api-references/model-database" index="0">0</mcreference>
@@ -36,6 +37,7 @@ const availableModels = [
   { id: 'mistralai/mistral-large-latest', name: 'Mistral Large Latest (Mistral AI)' },
   { id: 'mistralai/mistral-medium-latest', name: 'Mistral Medium Latest (Mistral AI)' },
   { id: 'mistralai/mistral-small-latest', name: 'Mistral Small Latest (Mistral AI)' },
+  { id: 'mistralai/Mistral-7B-Instruct-v0.3', name: 'Mistral (7B) Instruct v0.3 (Mistral AI)' },
 
 
   // Google <mcreference link="https://docs.aimlapi.com/api-references/model-database" index="0">0</mcreference>
@@ -65,19 +67,31 @@ const availableModels = [
   { id: 'alibaba-cloud/qwen-plus', name: 'Qwen Plus (Alibaba Cloud)' },
   { id: 'alibaba-cloud/qwen-14b-chat', name: 'Qwen 14B Chat (Alibaba Cloud)' },
   { id: 'alibaba-cloud/qwen-7b-chat', name: 'Qwen 7B Chat (Alibaba Cloud)' },
+  { id: 'Qwen/Qwen2-72B-Instruct', name: 'Qwen 2 Instruct (72B) (Alibaba Cloud)' },
+  { id: 'Qwen/Qwen2.5-7B-Instruct-Turbo', name: 'Qwen 2.5 7B Instruct Turbo (Alibaba Cloud)' },
+  { id: 'Qwen/Qwen2.5-Coder-32B-Instruct', name: 'Qwen 2.5 Coder 32B Instruct (Alibaba Cloud)' },
+  { id: 'Qwen/Qwen2.5-72B-Instruct-Turbo', name: 'Qwen 2.5 72B Instruct Turbo (Alibaba Cloud)' },
+  { id: 'Qwen/QwQ-32B', name: 'QwQ-32B (Alibaba Cloud)' },
+  { id: 'Qwen/Qwen3-235B-A22B-fp8-tput', name: 'Qwen 3 235B (Alibaba Cloud)' },
 
   // DeepSeek <mcreference link="https://docs.aimlapi.com/api-references/model-database" index="0">0</mcreference>
   { id: 'deepseek/deepseek-chat-v3-0324', name: 'DeepSeek V3 (DeepSeek)' },
   { id: 'deepseek/deepseek-r1', name: 'DeepSeek R1 (DeepSeek)' },
+  { id: 'deepseek/deepseek-prover-v2', name: 'deepseek-prover-v2 (DeepSeek)' },
   { id: 'deepseek-ai/deepseek-coder-33b-instruct', name: 'DeepSeek Coder 33B Instruct (DeepSeek)' },
   { id: 'deepseek-ai/deepseek-llm-67b-chat', name: 'DeepSeek LLM 67B Chat (DeepSeek)' },
 
   // xAI <mcreference link="https://docs.aimlapi.com/api-references/model-database" index="0">0</mcreference>
+  { id: 'x-ai/grok-3-mini-beta', name: 'Grok 3 Beta Mini (xAI)' },
+  { id: 'x-ai/grok-beta', name: 'Grok-2 Beta (xAI)' },
+  { id: 'x-ai/grok-3-beta', name: 'Grok 3 Beta (xAI)' },
   { id: 'xai-org/grok-1', name: 'Grok-1 (xAI)' },
 
   // Other notable models <mcreference link="https://docs.aimlapi.com/api-references/model-database" index="0">0</mcreference>
   { id: 'nousresearch/Nous-Hermes-2-Mixtral-8x7B-DPO', name: 'Nous Hermes 2 Mixtral 8x7B DPO (NousResearch)' },
+  { id: 'Gryphe/MythoMax-L2-13b-Lite', name: 'MythoMax L2 13b Lite (Gryphe)' },
   { id: '01-ai/Yi-34B-Chat', name: 'Yi 34B Chat (01.AI)' },
+  { id: 'anthracite-org/magnum-v4-72b', name: 'Magnum v4 72B' },
   // Add more models here as needed from https://docs.aimlapi.com/api-references/model-database <mcreference link="https://docs.aimlapi.com/api-references/model-database" index="0">0</mcreference>
 ];
 
