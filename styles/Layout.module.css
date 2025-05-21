@@ -1,0 +1,11 @@
+.layoutContainer {
+  display: flex;
+}
+
+.content {
+  margin-left: 220px; /* Should be slightly more than sidemenu width + padding */
+  padding: 20px;
+  width: calc(100% - 220px); /* Adjust based on sidemenu width */
+  min-height: 100vh;
+  background-color: transparent; /* Allow body background to show through */
+}

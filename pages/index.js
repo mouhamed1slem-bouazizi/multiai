@@ -23,10 +23,10 @@ const availableModels = [
 
   // Meta <mcreference link="https://docs.aimlapi.com/api-references/model-database" index="0">0</mcreference>
   { id: 'meta-llama/Meta-Llama-3-70B-Instruct', name: 'Llama 3 70B Instruct (Meta)' },
-  { id: 'meta-llama/Meta-Llama-3-8B-Instruct', name: 'Llama 3 8B Instruct (Meta)' },
-  { id: 'meta-llama/Llama-2-70b-chat-hf', name: 'Llama 2 70B Chat HF (Meta)' },
-  { id: 'meta-llama/Llama-2-13b-chat-hf', name: 'Llama 2 13B Chat HF (Meta)' },
-  { id: 'meta-llama/Llama-2-7b-chat-hf', name: 'Llama 2 7B Chat HF (Meta)' },
+  { id: 'meta-llama/Llama-3.3-70B-Instruct-Turbo', name: 'Meta Llama 3.3 70B Instruct Turbo (Meta)' },
+  { id: 'meta-llama/Llama-3.2-90B-Vision-Instruct-Turbo', name: 'Llama 3.2 90B Vision Instruct Turbo (Meta)' },
+  { id: 'neversleep/llama-3.1-lumimaid-70b', name: 'Llama 3.1 Lumimaid 70b (Meta)' },
+  { id: 'meta-llama/Llama-Vision-Free', name: 'Llama Vision Free (Meta)' },
   { id: 'codellama/CodeLlama-70b-Instruct-hf', name: 'CodeLlama 70B Instruct HF (Meta)' },
 
 
@@ -137,7 +137,8 @@ export default function Home() {
   };
 
   return (
-    <div className={styles.container}>
+    // The Layout component will wrap this, so styles.container might need review
+    <div className={styles.container}> 
       <Head>
         <title>AI Text Generator</title>
         <meta name="description" content="Generate text using AI" />
