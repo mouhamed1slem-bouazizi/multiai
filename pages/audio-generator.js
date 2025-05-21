@@ -140,19 +140,33 @@ export default function AudioGeneratorPage() {
             <label htmlFor="model-select" className={styles.modelLabel}>
               Choose a {taskType === 'tts' ? 'Text-to-Speech' : 'Speech-to-Text'} model:
             </label>
-            <select
-              id="model-select"
-              value={selectedModel}
-              onChange={(e) => setSelectedModel(e.target.value)}
-              className={styles.modelSelect}
-              disabled={loading}
-            >
-              {currentModels.map((model) => (
-                <option key={model.id} value={model.id}>
-                  {model.name} - {model.developer} ({model.context})
-                </option>
-              ))}
-            </select>
+            <div style={{ display: 'flex', alignItems: 'center' }}> {/* Wrapper for select and link */}
+              <select
+                id="model-select"
+                value={selectedModel}
+                onChange={(e) => setSelectedModel(e.target.value)}
+                className={styles.modelSelect}
+                disabled={loading}
+                style={{ flexGrow: 1 }} // Allow select to take available space
+              >
+                {currentModels.map((model) => (
+                  <option key={model.id} value={model.id}>
+                    {model.name} - {model.developer} ({model.context})
+                  </option>
+                ))}
+              </select>
+              {selectedModel && (
+                <a
+                  href={getApiReferenceLink(selectedModel)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontSize: '0.8rem', marginLeft: '10px', whiteSpace: 'nowrap', color: 'var(--foreground)' }}
+                  title="View API Reference for selected model"
+                >
+                  API Ref
+                </a>
+              )}
+            </div>
           </div>
 
           {taskType === 'tts' && (
